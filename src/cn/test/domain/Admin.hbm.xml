@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+   <class name="cn.test.domain.Admin" table="admin">
+     <id name="aid" column="aid">
+       <generator class="native"/>
+     </id>
+      <property name="anumber" column="anumber" length="20"/>
+      <property name="aname" column="aname" length="20"/>
+      <property name="asex" column="asex"/>
+      <property name="apassword" column="apassword" length="20"/>
+   </class>
+</hibernate-mapping>

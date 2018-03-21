@@ -1,0 +1,142 @@
+@charset "UTF-8";
+body{
+	font-family:微软雅黑,宋体;
+}
+.top{
+	background:#08877c;
+	height:50px;
+}
+.top a{
+	color:#fff;
+}
+.top_left{
+	padding-top:10px;
+	padding-right:50px;
+	float:right;
+}
+.menu_left{
+	float:left;
+	width:250px;
+	height:600px;
+	background-color:#eeeeee;
+}
+#main-navigation {
+	background-color:#dddddd;
+
+}
+#main-navigation ul li {
+	list-style-type:none;
+	position:relative;
+}
+#main-navigation ul li a {
+	color:#08877c;
+	line-height:2em;
+	padding:10px 40px;
+	font-size:19px;
+	text-decoration: none;  /*正常情况下无下划线*/
+    text-decoration: none; 
+}
+
+#main-navigation ul li a:hover, #main-navigation ul li.active > a {
+	background-color:#fff;
+}		
+#main-navigation ul li > ul {
+	position:absolute;
+	top:100%;
+	left:0;
+	background-color:#e6e1f0;
+}
+#main-navigation ul li > ul li, #main-navigation ul li > ul li a {
+    float:none;
+	display:block;
+	width:250px;
+}	
+
+.clearfix:after{display:table;line-height:0;content:""}
+.clearfix:after{clear:both}
+.tu{
+	margin-top:20px;
+	margin-left:490px;
+}
+.mima{
+	
+	border-style:none solid solid solid;
+	border-color: #08877c;
+	height:200px;
+	width:383px;
+	float:left;
+	margin-left:244px;
+	padding-left:30px;
+}
+.info{
+	margin-left:200px;
+	margin-top:20px;
+	float:left;
+}
+.info table{
+	width:600px;
+}
+.info th{
+	width:200px;
+	height:40px;
+}
+.info td{
+	width:400px;
+	height:40px;
+}
+
+.ExamList{
+	margin-left:200px;
+	margin-top:20px;
+	float:left;
+	width:800px;
+}
+.ExamList th,td{
+	height:30px;
+	text-align:center;
+}
+input[type="text"]{
+	height:35px;
+	width:350px;
+    -webkit-border-radius: 15px;
+    border:none;  
+    font-size:20px;
+    color:#000000;
+    background-color:rgba(255,255,255,0.75);
+    letter-spacing:1px;
+    font-family:黑体;
+    font-weight:bold;
+}
+input[type="submit"]{
+	background:#08877c;
+	font-size:20px;
+	color:#fff;
+	height:35px;
+	width:100px;
+	border:none;
+}
+.ques{
+	 margin-left:200px;
+	 margin-top:20px;
+	 float:left;
+}
+textarea{
+	margin: 7px 7px 7px 7px;
+	width:400px;
+	height:100px;
+	font-size:20px;
+}
+.right{
+	margin-top:200px;
+	float:left;
+	width:300px;
+	height:150px;
+	background:#08877c;
+	color:#fff;
+}
+.qcontent{
+	margin-top:30px;
+}
+.qanswer{
+	margin-top:15px;
+}

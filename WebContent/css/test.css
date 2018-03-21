@@ -1,0 +1,37 @@
+@charset "UTF-8";
+body{
+	margin-left:120px;
+	margin-right:120px;
+}
+.Exam{
+	float:left;
+	width:900px;
+}
+.right{
+	float:left;
+}
+.ques{
+	margin-top:50px;
+	padding:20px 20px 20px 20px;
+	background-color:rgba(125,225,235,0.5);
+}
+textarea{
+	width:400px;
+	height:200px;
+}
+h1{
+	padding-top:20px;
+	padding-bottom:20px;
+	color:#fff;
+	text-align:center;
+	background:#08877c;
+}
+input[type="submit"]{
+	background:#08877c;
+	font-size:20px;
+	color:#fff;
+	height:35px;
+	width:100px;
+	border:none;
+	-webkit-border-radius: 19px;
+}

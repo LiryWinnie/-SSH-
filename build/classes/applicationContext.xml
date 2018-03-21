@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/context  
+ 	http://www.springframework.org/schema/context/spring-context.xsd "  
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	>
+<!-- 引入外部的属性文件 -->
+<context:property-placeholder location="classpath:jdbc.properties"/>
+<!-- 配置连接池  C3P0连接池-->
+<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+  <property name="driverClass" value="${jdbc.driverClass}"/>
+  <property name="jdbcUrl" value="${jdbc.url}"/>
+  <property name="user" value="${jdbc.username}"/>
+  <property name="password" value="${jdbc.password}"/>
+</bean>
+
+<!-- 配置Hibernate的相关属性 -->
+<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <!--     注入连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+        
+        <!--         配置Hibernate的属性 -->
+        <property name="hibernateProperties">
+          <props>
+             <prop key="hibernate.dialect" >org.hibernate.dialect.MySQLDialect</prop>
+             <prop key="hibernate.show_sql">true</prop>
+             <prop key="hibernate.format_sql">true</prop>
+             <prop key="hibernate.hbm2ddl.auto">update</prop>
+             
+          </props>
+        </property>
+        
+       <!--         加载Hibernate中的映射文件 -->
+       <property name="mappingResources">
+            <list>
+              <value>cn/test/domain/Student.hbm.xml</value>
+              <value>cn/test/domain/Dean.hbm.xml</value>
+              <value>cn/test/domain/Teacher.hbm.xml</value>
+              <value>cn/test/domain/Admin.hbm.xml</value>
+              <value>cn/test/domain/Exam.hbm.xml</value>
+              <value>cn/test/domain/Question.hbm.xml</value>
+              <value>cn/test/domain/Bdegree.hbm.xml</value>
+              <value>cn/test/domain/Course.hbm.xml</value>
+            </list>
+       </property>     
+         
+</bean>
+
+<!-- 配置Action的类 -->
+<bean id="RegistAction" class="cn.test.action.RegistAction" scope="prototype">
+   <property name="studentService" ref="StudentService"></property>
+</bean>
+<bean id="StudentAction" class="cn.test.action.StudentAction" scope="prototype">
+   <property name="studentService" ref="StudentService"></property>
+</bean>    
+<bean id="TeacherAction" class="cn.test.action.TeacherAction" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+</bean>
+<bean id="DeanAction" class="cn.test.action.DeanAction" scope="prototype">
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+<bean id="AdminAction" class="cn.test.action.AdminAction" scope="prototype">
+   <property name="adminService" ref="AdminService"></property>
+</bean>
+<bean id="AddExamAction" class="cn.test.action.AddExamAction" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+</bean>
+<bean id="FindExamAction" class="cn.test.action.FindExamAction" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+</bean>
+<bean id="AddQuestion" class="cn.test.action.AddQuestion" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+</bean>
+<bean id="SaveQuestion" class="cn.test.action.SaveQuestion" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+</bean>
+<bean id="PubQuestion" class="cn.test.action.PubQuestion" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+</bean>
+<bean id="CourseTeaAction" class="cn.test.action.CourseTeaAction" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+</bean>
+<bean id="teaQuestion" class="cn.test.action.teaQuestion" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+</bean>
+<bean id="RekeyAction" class="cn.test.action.RekeyAction" scope="prototype">
+   <property name="teacherService" ref="TeacherService"></property>
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+
+<bean id="DeanAddExam" class="cn.test.action.DeanAddExam" scope="prototype">
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+<bean id="DeanFindAction" class="cn.test.action.DeanFindAction" scope="prototype">
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+<bean id="DeanSaveQuestion" class="cn.test.action.DeanSaveQuestion" scope="prototype">
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+<bean id="DeanForm" class="cn.test.action.DeanForm" scope="prototype">
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+<bean id="DeanPubAction" class="cn.test.action.DeanPubAction" scope="prototype">
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+<bean id="CourseDeanAction" class="cn.test.action.CourseDeanAction" scope="prototype">
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+<bean id="deanQuestion" class="cn.test.action.deanQuestion" scope="prototype">
+   <property name="deanService" ref="DeanService"></property>
+</bean>
+
+<bean id="StudentExam" class="cn.test.action.StudentExam" scope="prototype">
+   <property name="studentService" ref="StudentService"></property>
+</bean>
+<bean id="XmlAction" class="cn.test.action.XmlAction" scope="prototype">
+   <property name="studentService" ref="StudentService"></property>
+</bean>
+<bean id="CourseAction" class="cn.test.action.CourseAction" scope="prototype">
+   <property name="studentService" ref="StudentService"></property>
+</bean>
+
+
+<!--  配置业务层的类 -->
+<bean id="StudentService" class="cn.test.service.impl.StudentServiceImpl" scope="prototype">
+  <property name="studentDao" ref="StudentDao"></property>
+</bean>
+<bean id="TeacherService" class="cn.test.service.impl.TeacherServiceImpl" scope="prototype">
+  <property name="teacherDao" ref="TeacherDao"></property>
+</bean>
+<bean id="DeanService" class="cn.test.service.impl.DeanServiceImpl" scope="prototype">
+  <property name="deanDao" ref="DeanDao"></property>
+</bean>
+<bean id="AdminService" class="cn.test.service.impl.AdminServiceImpl" scope="prototype">
+  <property name="adminDao" ref="AdminDao"></property>
+</bean>
+
+<!-- 配置DAO的类 -->
+<bean id="StudentDao" class="cn.test.dao.impl.StudentDaoImpl" scope="prototype">
+  <property name="sessionFactory" ref="sessionFactory"/>  
+</bean>
+<bean id="TeacherDao" class="cn.test.dao.impl.TeacherDaoImpl" scope="prototype">
+  <property name="sessionFactory" ref="sessionFactory"/>  
+</bean>
+<bean id="DeanDao" class="cn.test.dao.impl.DeanDaoImpl" scope="prototype">
+  <property name="sessionFactory" ref="sessionFactory"/>  
+</bean>
+<bean id="AdminDao" class="cn.test.dao.impl.AdminDaoImpl" scope="prototype">
+  <property name="sessionFactory" ref="sessionFactory"/>  
+</bean>
+
+<!-- 配置事务管理器 -->
+<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+   <property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+
+<!-- 开启注解事物 -->
+<tx:annotation-driven transaction-manager="transactionManager"/>
+ </beans>

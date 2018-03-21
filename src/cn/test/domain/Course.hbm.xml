@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class name="cn.test.domain.Course" table="course">
+     <id name="csid" column="csid">
+       <generator class="native"/>
+     </id>
+      <property name="course" column="course"/>
+      <property name="tnumber" column="tnumber" length="20"/>
+      <property name="tname" column="tname" length="20"/>
+      <property name="snumber" column="snumber" length="20"/>
+      <property name="sname" column="sname" length="20"/>
+      <property name="grade" column="grade" length="20"/>
+      <property name="status" column="status" length="20"/>
+   </class>
+</hibernate-mapping>

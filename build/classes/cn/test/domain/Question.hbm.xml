@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+   <class name="cn.test.domain.Question" table="question">
+     <id name="qid" column="qid">
+       <generator class="native"/>
+     </id>
+      <property name="eid" column="eid" />
+      <property name="qtype" column="qtype" length="20"/>
+      <property name="qtitle" column="qtitle"/>
+      <property name="qcontent" column="qcontent" />
+      <property name="qscore" column="qscore" length="20"/>
+      <property name="qanswer" column="qanswer"/>
+       <property name="qdegree" column="qdegree"/>
+   </class>
+</hibernate-mapping>

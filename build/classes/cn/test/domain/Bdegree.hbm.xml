@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class name="cn.test.domain.Bdegree" table="bdegree">
+     <id name="bid" column="bid">
+       <generator class="native"/>
+     </id>
+      <property name="eid" column="eid" />
+      <property name="easy" column="easy"/>
+      <property name="middle" column="middle"/>
+      <property name="difficult" column="difficult"/>
+      <property name="comment" column="comment"/>
+   </class>
+</hibernate-mapping>

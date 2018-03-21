@@ -1,0 +1,29 @@
+.countdown {
+	background:#005DAC;
+	text-align:center;
+	position:absolute;
+	top:30px;
+	right:120px;
+	width:120px;
+	height:120px;
+	border-radius:60px;
+	-webkit-border-radius:80px;
+	-moz-border-radius:80px;
+}
+.countdown .mtp {
+	margin-top:30px;
+}
+.countdown .line_height34 {
+	line-height:10px;
+}
+.countdown .countdown_text {
+	color:white;
+	margin-top:10px;
+	font-size:16px;
+	line-height:10px;
+	letter-spacing:3px;
+}
+.countdown #countdown_time {
+	color:#F8B62C;
+	font-size:16px;
+}

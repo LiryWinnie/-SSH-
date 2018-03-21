@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="ssh" extends="struts-default" namespace="/">
+<!-- 	     Action交给Struts2自身进行管理 -->
+     <!--<action name="product_*" class="cn.ssh.action.ProductAction" method="{1}"> -->
+         <!-- 	  Action类交给Spring 建议使用 -->
+         <!-- 登录注册 -->
+	   <action name="student_login" class="StudentAction" >
+	        <result name="success" type="redirect">/student/stuindex.jsp</result>  
+            <result name="input">/student/loginExam.jsp</result> 
+	   </action>
+       <action name="student_regist" class="RegistAction" >
+	        <result name="success" type="redirect">/student/loginExam.jsp</result>  
+            <result name="input">/student/stuRegist.jsp</result> 
+	   </action>
+	   <action name="teacher_login" class="TeacherAction" >
+	        <result name="success" type="redirect">/teacher/teaindex.jsp</result>  
+            <result name="input">/teacher/tealogin.jsp</result> 
+	   </action>
+	   <action name="dean_login" class="DeanAction" >
+	        <result name="success" type="redirect">/dean/dean_index.jsp</result>  
+            <result name="input">/dean/deaLogin.jsp</result> 
+	   </action>
+	   <action name="admin_login" class="AdminAction" >
+	        <result name="success" type="redirect">/admin/ad_index.jsp</result>  
+            <result name="input">/admin/login.jsp</result> 
+	   </action>
+	   <!-- 老师 -->
+	   <action name="create_exam" class="AddExamAction">
+	        <result name="success" type="redirect">/teacher/create_exam.jsp</result>  
+            <result name="input">/teacher/create_exam.jsp</result> 
+	   </action>
+	   <action name="findexam" class="FindExamAction">
+	        <result name="success">/teacher/createQuestion.jsp</result>
+	        <result name="input">/teacher/teaindex.jsp</result>
+	   </action>
+	   <action name="findexam_*" class="AddQuestion" method="{1}">
+	        <result name="editsuccess">/teacher/addQuestion.jsp</result>
+	        <result name="pubsuccess">/teacher/pubQuestion.jsp</result>
+	        <result name="unaud">/teacher/unaudit.jsp</result>
+	        <result name="unpass">/teacher/unpassed.jsp</result>
+	        <result name="look">/teacher/rePub.jsp</result>
+	        <result name="que">/teacher/question.jsp</result>
+	        <result name="doing">/teacher/doing.jsp</result>
+	        <result name="piy">/teacher/doinglist.jsp</result>
+	        <result name="history">/teacher/history.jsp</result>
+	        <result name="lookhistory">/teacher/lookhistory.jsp</result>
+	        <result name="end" type="redirectAction">/findexam_doing.action</result>
+	   </action>
+	   <action name="teaQuestion_*" class="teaQuestion" method="{1}">
+	        <result name="mod">/teacher/quemod.jsp</result>
+	        <result name="update" type="redirectAction">/findexam.action</result>
+	        <result name="del" type="redirectAction">/findexam.action</result>
+	   </action>
+	   <action name="coursetea_*" class="CourseTeaAction" method="{1}">
+	        <result name="piy">/teacher/Marking.jsp</result>
+	        <result name="sub" type="redirectAction">/findexam_piy.action</result>
+	   </action>
+	   <action name="questionsave" class="SaveQuestion">
+	        <result name="input">/teacher/addQuestion.jsp</result>
+	        <result name="success" type="redirect">/teacher/addQuestion.jsp</result>
+	   </action>
+	   <action name="pubquestion_*" class="PubQuestion" method="{1}">
+	        <result name="success"  type="redirectAction">/findexam.action</result>
+	        <result name="input">/teacher/pubQuestion.jsp</result>
+	        <result name="second" type="redirectAction">/findexam_unpass.action</result>
+	   </action>
+	    <!-- 院长 -->
+	   <action name="dean_create" class="DeanAddExam">
+	        <result name="success" type="redirect">/dean/createxam.jsp</result>
+	        <result name="input">/dean/createxam.jsp</result>
+	   </action>
+	   <action name="deanfind_*" class="DeanFindAction" method="{1}">
+	        <result name="listsuccess">/dean/createQuestion.jsp</result>
+	        <result name="addsuccess">/dean/addQuestion.jsp</result>
+	        <result name="pubsuccess">/dean/pubQuestion.jsp</result>
+	        <result name="unaudsuccess">/dean/unpublished.jsp</result>
+	        <result name="findsuccess">/dean/audit.jsp</result>
+	        <result name="doing">/dean/doing.jsp</result>
+	        <result name="que">/dean/question.jsp</result>
+	        <result name="piy">/dean/doinglist.jsp</result>
+	        <result name="history">/dean/history.jsp</result>
+	        <result name="lookhistory">/dean/lookhistory.jsp</result>
+	        <result name="end" type="redirectAction">/deanfind_doing.action</result>
+	        
+	   </action>
+	   <action name="deanQuestion_*" class="deanQuestion" method="{1}">
+	        <result name="mod">/dean/quemod.jsp</result>
+	        <result name="update" type="redirectAction">/deanfind_list.action</result>
+	        <result name="del" type="redirectAction">/deanfind_list.action</result>
+	   </action>
+	   <action name="deanpub_*" class="DeanPubAction" method="{1}">
+	        <result name="input" type="redirect">/dean/pubQuestion.jsp</result>
+	        <result name="success" type="redirectAction">/deanfind_list.action</result>
+	   </action>
+	   <action name="dean_save" class="DeanSaveQuestion">
+	        <result name="input">/dean/addQuestion.jsp</result>
+	        <result name="success" type="redirect">/dean/addQuestion.jsp</result>
+	   </action>
+	   <action name="deanform_*" class="DeanForm" method="{1}">
+	        <result name="pub" type="redirectAction">/deanfind_unaud.action</result>
+	        <result name="unpub" type="redirectAction">/deanfind_unaud.action</result>
+	   </action>
+	   <action name="coursedean_*" class="CourseDeanAction" method="{1}">
+	        <result name="piy">/dean/Marking.jsp</result>
+	        <result name="sub" type="redirectAction">/deanfind_piy.action</result>
+	   </action>
+	   
+	   <action name="studentexam_*" class="StudentExam" method="{1}">
+	        <result name="list">/student/myExam.jsp</result>
+	        <result name="join">/student/joinExam.jsp</result>
+	        <result name="add" type="redirectAction">/course_list.action</result>
+	        <result name="history">/student/history.jsp</result>
+	   </action>
+	   <action name="studentEx_*" class="XmlAction" method="{1}">
+	        <result name="joinok" type="redirectAction">/studentexam_list.action</result>
+	   </action>
+	   <action name="course_*" class="CourseAction" method="{1}">
+	        <result name="list">/student/myCourse.jsp</result>
+	        <result name="search">/student/searchCourse.jsp</result>	      
+	   </action>
+	   
+	   <action name="rekey_*" class="RekeyAction" method="{1}">
+	        <result name="tea">/teacher/teaRekey.jsp</result>
+	        <result name="dean">/dean/deanRekey.jsp</result>
+	   </action>
+     </package>
+<!-- 此时method={1} 中的{1}代表user_*中的*,即加入你访问路径是/user_registPage.action，则此刻访问的是该Action中的registPage方法。同理，如果通配符* == delete,则就访问的是delete方法。 -->
+<!-- 当name中含有多个通配符的时候，method={2} ,就代表第二个通配符，同理以此类推。 -->
+<!-- 这种方式更灵活的简化了struts.xml的配置文件。 -->
+
+    
+</struts>    
